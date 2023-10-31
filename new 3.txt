@@ -1,0 +1,24 @@
+===============
+> kaedyn code < 
+===============
+//        String savedRecipe = "";
+//        String tkIngredients = "";
+//        Scanner ingredientsSc = new Scanner(ingredients);
+//        while (ingredientsSc.hasNextLine()) {
+//            //tkIngredients = ingredientsSc.hasNext(ingredients) += "$";
+//        }
+//        File f = new File("Recipes.txt");
+//        try {
+//            Scanner fileSc = new Scanner(f);
+//
+//            while (fileSc.hasNextLine()) {
+//                //savedRecipe = name += "#" + tkIngredients
+//                
+//            }
+//        } catch (FileNotFoundException ex) {
+//            Logger.getLogger(RecipesManager.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.      
+
+

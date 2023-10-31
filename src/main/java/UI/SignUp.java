@@ -1,22 +1,24 @@
-/*
+ /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 package UI;
 
+import BackEnd.UserManager; // imported BackEnd User class
+import java.io.FileNotFoundException;
+import javax.swing.JOptionPane;
+
 /**
  *
- * @author 27832
+ * @author Kaedyn Malek
  */
-public class SignUp extends javax.swing.JFrame
-{
+public class SignUp extends javax.swing.JFrame {
 
     /**
-     * Creates new form SignIn
+     * Creates new form SignUp
      */
-    public SignUp()
-    {
+    public SignUp() {
         initComponents();
     }
 
@@ -27,196 +29,252 @@ public class SignUp extends javax.swing.JFrame
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
+        pnlheading = new javax.swing.JPanel();
         lblSignUp = new javax.swing.JLabel();
-        lblYourName = new javax.swing.JLabel();
-        lblPhoneNumber = new javax.swing.JLabel();
-        lblEmailAddress = new javax.swing.JLabel();
-        lblDateOfBirth = new javax.swing.JLabel();
-        lblSurname = new javax.swing.JLabel();
-        txfName = new javax.swing.JTextField();
-        txfSurname = new javax.swing.JTextField();
+        pnlDetails = new javax.swing.JPanel();
+        lblUsername = new javax.swing.JLabel();
+        lblPassword = new javax.swing.JLabel();
+        txfUserName = new javax.swing.JTextField();
+        btnSignUp = new javax.swing.JButton();
+        pfPassword = new javax.swing.JPasswordField();
+        lblConfirm = new javax.swing.JLabel();
+        pfConfirmPassword = new javax.swing.JPasswordField();
+        lblName = new javax.swing.JLabel();
+        txfFullName = new javax.swing.JTextField();
+        lblName2 = new javax.swing.JLabel();
         txfPhoneNumber = new javax.swing.JTextField();
-        txfEmailAddress = new javax.swing.JTextField();
-        txfDateOfBirth = new javax.swing.JTextField();
-        btnSignIn = new javax.swing.JButton();
+        mbMenu = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        lblSignUp.setFont(new java.awt.Font("Georgia", 1, 21)); // NOI18N
-        lblSignUp.setText("Sign-Up");
+        pnlheading.setBackground(new java.awt.Color(204, 255, 204));
 
-        lblYourName.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 15)); // NOI18N
-        lblYourName.setText("Enter your name:");
+        lblSignUp.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        lblSignUp.setText("Sign Up");
 
-        lblPhoneNumber.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 15)); // NOI18N
-        lblPhoneNumber.setText("Enter your phone number:");
+        javax.swing.GroupLayout pnlheadingLayout = new javax.swing.GroupLayout(pnlheading);
+        pnlheading.setLayout(pnlheadingLayout);
+        pnlheadingLayout.setHorizontalGroup(
+            pnlheadingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlheadingLayout.createSequentialGroup()
+                .addGap(113, 113, 113)
+                .addComponent(lblSignUp)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnlheadingLayout.setVerticalGroup(
+            pnlheadingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlheadingLayout.createSequentialGroup()
+                .addContainerGap(23, Short.MAX_VALUE)
+                .addComponent(lblSignUp)
+                .addGap(20, 20, 20))
+        );
 
-        lblEmailAddress.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 15)); // NOI18N
-        lblEmailAddress.setText("Enter your e-mail address:");
+        pnlDetails.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        pnlDetails.setToolTipText("Login Screen");
+        pnlDetails.setName("Login"); // NOI18N
 
-        lblDateOfBirth.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 15)); // NOI18N
-        lblDateOfBirth.setText("Enter your date of birth:");
+        lblUsername.setText("Username");
 
-        lblSurname.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 15)); // NOI18N
-        lblSurname.setText("Enter your surname:");
+        lblPassword.setText("Password");
 
-        txfEmailAddress.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                txfEmailAddressActionPerformed(evt);
+        btnSignUp.setText("Sign Up");
+        btnSignUp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSignUpActionPerformed(evt);
             }
         });
 
-        btnSignIn.setFont(new java.awt.Font("Franklin Gothic Demi", 0, 15)); // NOI18N
-        btnSignIn.setText("Sign In");
-        btnSignIn.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                btnSignInActionPerformed(evt);
-            }
-        });
+        lblConfirm.setText("Confirm Password");
+
+        lblName.setText("Full Name");
+
+        lblName2.setText("Phone number");
+
+        javax.swing.GroupLayout pnlDetailsLayout = new javax.swing.GroupLayout(pnlDetails);
+        pnlDetails.setLayout(pnlDetailsLayout);
+        pnlDetailsLayout.setHorizontalGroup(
+            pnlDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlDetailsLayout.createSequentialGroup()
+                .addGroup(pnlDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlDetailsLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(pnlDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlDetailsLayout.createSequentialGroup()
+                                .addComponent(lblName)
+                                .addGap(97, 97, 97)
+                                .addComponent(txfFullName, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE))
+                            .addGroup(pnlDetailsLayout.createSequentialGroup()
+                                .addComponent(lblName2)
+                                .addGap(72, 72, 72)
+                                .addComponent(txfPhoneNumber))
+                            .addGroup(pnlDetailsLayout.createSequentialGroup()
+                                .addComponent(lblUsername)
+                                .addGap(98, 98, 98)
+                                .addComponent(txfUserName))
+                            .addGroup(pnlDetailsLayout.createSequentialGroup()
+                                .addComponent(lblPassword)
+                                .addGap(101, 101, 101)
+                                .addComponent(pfPassword))
+                            .addGroup(pnlDetailsLayout.createSequentialGroup()
+                                .addComponent(lblConfirm)
+                                .addGap(54, 54, 54)
+                                .addComponent(pfConfirmPassword))))
+                    .addGroup(pnlDetailsLayout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(btnSignUp, javax.swing.GroupLayout.DEFAULT_SIZE, 307, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        pnlDetailsLayout.setVerticalGroup(
+            pnlDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlDetailsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblName)
+                    .addComponent(txfFullName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(pnlDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblName2)
+                    .addComponent(txfPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(pnlDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblUsername)
+                    .addComponent(txfUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(pnlDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlDetailsLayout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(lblPassword))
+                    .addGroup(pnlDetailsLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(pfPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(pnlDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblConfirm)
+                    .addComponent(pfConfirmPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(btnSignUp, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jMenu1.setText("File");
+        mbMenu.add(jMenu1);
+
+        jMenu2.setText("Edit");
+        mbMenu.add(jMenu2);
+
+        setJMenuBar(mbMenu);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblSignUp, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(238, 238, 238))
             .addGroup(layout.createSequentialGroup()
-                .addGap(55, 55, 55)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lblSurname, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblDateOfBirth, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblEmailAddress, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblPhoneNumber, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblYourName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txfSurname)
-                    .addComponent(txfName, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
-                    .addComponent(txfPhoneNumber)
-                    .addComponent(txfEmailAddress)
-                    .addComponent(txfDateOfBirth))
-                .addGap(46, 46, 46)
-                .addComponent(btnSignIn, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pnlheading, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(pnlDetails, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(lblSignUp, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblYourName, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txfName, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblSurname, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txfSurname, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txfPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSignIn, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblEmailAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txfEmailAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblDateOfBirth, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txfDateOfBirth, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(pnlheading, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnlDetails, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txfEmailAddressActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_txfEmailAddressActionPerformed
-    {//GEN-HEADEREND:event_txfEmailAddressActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txfEmailAddressActionPerformed
-
-    private void btnSignInActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnSignInActionPerformed
-    {//GEN-HEADEREND:event_btnSignInActionPerformed
-        String yourName = txfName.getText();
-        String surname = txfSurname.getText();
+    private void btnSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignUpActionPerformed
+        // Collect input from GUI fields
+        String fullName = txfFullName.getText();
+        String username = txfUserName.getText();
         String phoneNumber = txfPhoneNumber.getText();
-        String eMail = txfEmailAddress.getText();
-        String birthday = txfDateOfBirth.getText();
-        
-        Menu menu = new Menu();
-        dispose();
-        menu.setVisible(true);
-                
-    }//GEN-LAST:event_btnSignInActionPerformed
+        String password = new String(pfPassword.getPassword());
+        String confirmPassword = new String(pfConfirmPassword.getPassword());
+
+        // Call the addUser method from the UserManager class
+        try {
+            if (UserManager.addUser(fullName, username, phoneNumber, password, confirmPassword, "Users.txt")) {
+                // Successfully added the user
+                JOptionPane.showMessageDialog(null, "User successfully registered.");
+                // Close SignUp form
+                SignUp.this.dispose();
+                // Open SignIn form
+                new Recipe().setVisible(true);
+            } else {
+                // Validation failed
+                JOptionPane.showMessageDialog(null, "Registration failed. Please make sure all fields are filled and the passwords match.");
+            }
+        } catch (FileNotFoundException ex) {
+            // File not found
+            JOptionPane.showMessageDialog(null, "An error occurred. Please try again later.");
+        }
+
+     
+    }//GEN-LAST:event_btnSignUpActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[])
-    {
+    public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try
-        {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels())
-            {
-                if ("Nimbus".equals(info.getName()))
-                {
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex)
-        {
+        } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(SignUp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex)
-        {
+        } catch (InstantiationException ex) {
             java.util.logging.Logger.getLogger(SignUp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex)
-        {
+        } catch (IllegalAccessException ex) {
             java.util.logging.Logger.getLogger(SignUp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex)
-        {
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(SignUp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable()
-        {
-            public void run()
-            {
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
                 new SignUp().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnSignIn;
-    private javax.swing.JLabel lblDateOfBirth;
-    private javax.swing.JLabel lblEmailAddress;
-    private javax.swing.JLabel lblPhoneNumber;
+    private javax.swing.JButton btnSignUp;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JLabel lblConfirm;
+    private javax.swing.JLabel lblName;
+    private javax.swing.JLabel lblName2;
+    private javax.swing.JLabel lblPassword;
     private javax.swing.JLabel lblSignUp;
-    private javax.swing.JLabel lblSurname;
-    private javax.swing.JLabel lblYourName;
-    private javax.swing.JTextField txfDateOfBirth;
-    private javax.swing.JTextField txfEmailAddress;
-    private javax.swing.JTextField txfName;
+    private javax.swing.JLabel lblUsername;
+    private javax.swing.JMenuBar mbMenu;
+    private javax.swing.JPasswordField pfConfirmPassword;
+    private javax.swing.JPasswordField pfPassword;
+    private javax.swing.JPanel pnlDetails;
+    private javax.swing.JPanel pnlheading;
+    private javax.swing.JTextField txfFullName;
     private javax.swing.JTextField txfPhoneNumber;
-    private javax.swing.JTextField txfSurname;
+    private javax.swing.JTextField txfUserName;
     // End of variables declaration//GEN-END:variables
 }
